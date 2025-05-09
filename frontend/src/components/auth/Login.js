@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
-import { TextField, Button, Container, Typography, Box } from '@material-ui/core';
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
 
     AuthService.login(username, password).then(
       () => {
-        history.push('/products');
+        navigate('/products');
         window.location.reload();
       },
       (error) => {

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProductService from '../../services/product.service';
-import { Button, Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@material-ui/core';
+import { Button, Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@mui/material';
 import ProductItem from './ProductItem';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     ProductService.getAll()
@@ -35,7 +35,7 @@ const ProductList = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => history.push('/products/new')}
+          onClick={() => navigate('/products/new')}
         >
           Add Product
         </Button>

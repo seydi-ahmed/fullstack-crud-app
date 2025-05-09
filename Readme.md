@@ -12,6 +12,7 @@ cd fullstack-crud-app
     - npm start
 - terminal 2:
     - cd frontend
+    - export NODE_OPTIONS=--openssl-legacy-provider
     - npm start
 
 ## Structure du projet:
