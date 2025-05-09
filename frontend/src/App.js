@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Container } from '@material-ui/core';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Container } from '@mui/material';
 import Navbar from './components/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -13,13 +12,13 @@ function App() {
     <Router>
       <Navbar />
       <Container>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <PrivateRoute exact path="/products" component={ProductList} />
-          <PrivateRoute exact path="/products/new" component={ProductForm} />
-          <PrivateRoute exact path="/products/:id/edit" component={ProductForm} />
-        </Switch>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/products" element={<PrivateRoute><ProductList /></PrivateRoute>} />
+          <Route path="/products/new" element={<PrivateRoute><ProductForm /></PrivateRoute>} />
+          <Route path="/products/:id/edit" element={<PrivateRoute><ProductForm /></PrivateRoute>} />
+        </Routes>
       </Container>
     </Router>
   );
