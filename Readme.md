@@ -37,7 +37,9 @@ git clone https://github.com/seydi-ahmed/fullstack-crud-app.git
 cd fullstack-crud-app
 ```
 
-1) Démarrer le backend
+- Ouvrir deux terminals
+
+1) Gérer le backend dans le premier
 
 
 ```
@@ -49,7 +51,6 @@ DB_HOST=localhost
 DB_USER=crud_user
 DB_PASSWORD=crud_password
 DB_NAME=crud_app
-SECRET=your-secret-key
 ```
 
 ```
@@ -57,9 +58,9 @@ npm install
 npm start
 ```
 
-1) Démarrer le frontend
+2) Gérer le frontend dans l'autre
 ```
-cd ../frontend
+cd frontend
 npm install
 npm start
 ```
