@@ -15,11 +15,20 @@ cd fullstack-crud-app
     - export NODE_OPTIONS=--openssl-legacy-provider
     - npm start
 
+    
+## Base de données
+```
+CREATE USER crud_user WITH PASSWORD 'crud_password';
+CREATE DATABASE crud_app OWNER crud_user;
+GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
+```
+
 ## Structure du projet:
 ```
 .
 ├── backend
 │   ├── config
+│   │   ├── auth.config.js
 │   │   └── db.config.js
 │   ├── controllers
 │   │   ├── auth.controller.js
@@ -30,7 +39,6 @@ cd fullstack-crud-app
 │   │   ├── index.js
 │   │   ├── product.model.js
 │   │   └── user.model.js
-│   ├── node_modules (trop de fichiers pour les afficher ici)
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── routes
@@ -38,7 +46,6 @@ cd fullstack-crud-app
 │   │   └── product.routes.js
 │   └── server.js
 ├── frontend
-│   ├── node_modules (trop de fichiers pour les afficher ici)
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── public
@@ -54,12 +61,23 @@ cd fullstack-crud-app
 │       ├── App.js
 │       ├── App.test.js
 │       ├── components
+│       │   ├── auth
+│       │   │   ├── Login.js
+│       │   │   └── Register.js
+│       │   ├── Navbar.js
+│       │   ├── PrivateRoute.js
+│       │   └── products
+│       │       ├── ProductForm.js
+│       │       ├── ProductItem.js
+│       │       └── ProductList.js
 │       ├── index.css
 │       ├── index.js
 │       ├── logo.svg
 │       ├── reportWebVitals.js
 │       ├── services
+│       │   ├── auth.service.js
+│       │   └── product.service.js
 │       └── setupTests.js
 ├── push.sh
-└── Readme.md
+├── Readme.md
 ```
