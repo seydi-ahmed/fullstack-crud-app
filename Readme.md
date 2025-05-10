@@ -38,8 +38,21 @@ cd fullstack-crud-app
 ```
 
 1) Démarrer le backend
+
+
 ```
 cd backend
+```
+- créer le fichier .env pour lire les variables d'environment
+```
+DB_HOST=localhost
+DB_USER=crud_user
+DB_PASSWORD=crud_password
+DB_NAME=crud_app
+SECRET=your-secret-key
+```
+
+```
 npm install
 npm start
 ```
