@@ -110,3 +110,14 @@ GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
 ├── push.sh
 ├── Readme.md
 ```
+
+## Test pour le backend
+| Requête                    | Headers nécessaires               |
+|----------------------------|-----------------------------------|
+| POST /api/auth/signup      | Aucun                            |
+| POST /api/auth/signin      | Aucun                            |
+| POST /api/products         | x-access-token: \<ton_token\>    |
+| GET /api/products          | x-access-token: \<ton_token\>    |
+| GET /api/products/:id      | x-access-token: \<ton_token\>    |
+| PUT /api/products/:id      | x-access-token: \<ton_token\>    |
+| DELETE /api/products/:id   | x-access-token: \<ton_token\>    |
