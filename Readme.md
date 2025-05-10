@@ -35,9 +35,22 @@ Cette application web permet la gestion sécurisée de produits avec authentific
 ```bash
 git clone https://github.com/seydi-ahmed/fullstack-crud-app.git
 cd fullstack-crud-app
+```
+
+1) Démarrer le backend
+```
+cd backend
 npm install
 npm start
 ```
+
+1) Démarrer le frontend
+```
+cd ../frontend
+npm install
+npm start
+```
+
 - suivre les étapes
 
 
