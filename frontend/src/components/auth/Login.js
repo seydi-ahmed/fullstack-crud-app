@@ -1,29 +1,42 @@
-// src/components/auth/Login.js
-import React, { useState } from 'react';
-import authService from '../../services/auth.service';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import AuthService from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await authService.login(username, password);
-      navigate('/products');
-    } catch (err) {
-      alert('Login failed');
+      await AuthService.login(username, password);
+      navigate("/products");
+    } catch (error) {
+      alert("Échec de connexion !");
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Login</h2>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <div className="container">
+      <h2>Connexion</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Nom d'utilisateur"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
   );
-}
+};
+
+export default Login;
