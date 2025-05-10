@@ -1,59 +1,51 @@
-# FULL STACK CRUD
+# 🚀 FULL STACK CRUD APP
 
-## Describtion
-Création d'une application web de gestion de produits avec authentification des utilisateurs.
+Cette application web permet la gestion sécurisée de produits avec authentification des utilisateurs. Chaque utilisateur a son propre espace pour créer, lire, modifier et supprimer ses produits.
 
-## 🧑 Utilisateur
-- Peut s'inscrire et se connecter
-- A un compte personnel sécurisé (authentifié via JWT)
-- Ne voit que ses propres produits
+> Réalisée par **Mouhamed Diouf** – Développeur Full Stack  
+> 📧 seydiahmedelcheikh@gmail.com  
+> 📞 +221 776221681  
+> 🔗 [LinkedIn](https://www.linkedin.com/in/mouhamed-diouf-435207174)  
+> 🧠 GitHub : [https://github.com/seydi-ahmed/fullstack-crud-app](https://github.com/seydi-ahmed/fullstack-crud-app)
 
-## 📦 Produit (objet métier)
-- id (auto-incrément)
-- name (nom du produit)
-- description (texte libre)
-- price (nombre décimal)
-- createdAt, updatedAt (timestamps automatiques)
-- userId (clé étrangère vers l'utilisateur)
+---
 
-## 🔧 Fonctionnalités
-- 🔐 Authentification (inscription + connexion avec JWT)
-- 📝 CRUD produit:
-    - Créer un nouveau produit
-    - Lire la liste des produits d’un utilisateur
-    - Mettre à jour un produit existant
-    - Supprimer un produit
+## 📦 Fonctionnalités
 
-## 🛠️ Stack technique :
-- Backend : Node.js + Express + PostgreSQL + Sequelize
-- Frontend : React.js
-- Auth : JWT (JSON Web Token)
+- Authentification JWT : Inscription, Connexion sécurisée
+- Chaque utilisateur gère ses propres produits
+- CRUD Produit : Créer, Lire, Modifier, Supprimer
+- Stockage du token dans localStorage
+- Routage protégé (PrivateRoute)
+- Frontend en React + Backend Express + PostgreSQL
 
-## Installation et Utilisation
-1) Cloner le répertoire:
-```
+---
+
+## 🛠️ Stack technique
+
+- **Frontend** : React.js
+- **Backend** : Node.js + Express
+- **Base de données** : PostgreSQL + Sequelize ORM
+- **Authentification** : JSON Web Token (JWT)
+
+---
+
+## ⚙️ Installation
+
+```bash
 git clone https://github.com/seydi-ahmed/fullstack-crud-app.git
 cd fullstack-crud-app
+npm install
+npm start
 ```
-2) Ouvrir 2 terminals
-- terminal 1:
-    - cd backend
-    - npm start
-- terminal 2:
-    - cd frontend
-    - export NODE_OPTIONS=--openssl-legacy-provider
-    - npm start
+- suivre les étapes
 
 
-## Base de données
-```
-CREATE USER crud_user WITH PASSWORD 'crud_password';
-CREATE DATABASE crud_app OWNER crud_user;
-GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
-```
+---
 
-## Structure du projet:
-```
+## 📂 Structure du projet
+
+```bash
 .
 ├── backend
 │   ├── config
@@ -107,11 +99,15 @@ GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
 │       │   ├── auth.service.js
 │       │   └── product.service.js
 │       └── setupTests.js
-├── push.sh
-├── Readme.md
+├── package.json
+├── package-lock.json
+├── push.sh (pour pousser le répertoire de maniére automatique)
+├── READ.MD
+└── Readme.md
+
 ```
 
-## Test pour le backend
+## Test pour le backend (avec Postman)
 | Requête                    | Headers nécessaires               |
 |----------------------------|-----------------------------------|
 | POST /api/auth/signup      | Aucun                            |
@@ -122,15 +118,18 @@ GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
 | PUT /api/products/:id      | x-access-token: \<ton_token\>    |
 | DELETE /api/products/:id   | x-access-token: \<ton_token\>    |
 
+
+---
+
 ## Boulot pour le frontend
 ### 🧩 1. Connexion à l’API depuis le frontend (React)
 1) auth.service.js : pour gérer login/register
 2) product.service.js : pour appeler les routes /api/products
 
 ### 🖼️ 2. Composants UI
-1) 🔐 Auth :
-- Register.js : formulaire d’inscription
-- Login.js : formulaire de connexion
+- 🔐 Auth :
+    - Register.js : formulaire d’inscription
+    - Login.js : formulaire de connexion
 
 ### 📦 Produits :
 1) ProductList.js : liste les produits
@@ -139,21 +138,23 @@ GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
 4) PrivateRoute.js : route protégée si non connecté
 
 ### 🧠 3. Stocker le token côté client
-1) Quand l’utilisateur se connecte :
-- Sauvegarder le accessToken (dans localStorage)
-- L’utiliser dans toutes les requêtes via Axios
+- Quand l’utilisateur se connecte :
+    - Sauvegarder le accessToken (dans localStorage)
+    - L’utiliser dans toutes les requêtes via Axios
 
 ### 🔐 4. Protéger les pages (PrivateRoute)
-1) Seules les personnes connectées peuvent:
-- Voir les produits
-- Créer/modifier/supprimer un produit
+- Seules les personnes connectées peuvent:
+    - Voir les produits
+    - Créer/modifier/supprimer un produit
 
 ### 🌍 5. Navigation (Navbar.js)
-1) Afficher :
-- Login/Register si non connecté
-- Produits/Logout si connecté
+- Afficher :
+    - Login/Register si non connecté
+    - Produits/Logout si connecté
 
 ### ✅ 6. Test complet du frontend
-1) Créer un compte
-- Se connecter
-- Ajouter, afficher, modifier, supprimer un produit
+- Créer un compte
+    - Se connecter
+    - Ajouter, afficher, modifier, supprimer un produit
+
+---
