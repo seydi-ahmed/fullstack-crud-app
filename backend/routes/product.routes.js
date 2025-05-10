@@ -1,3 +1,5 @@
+// product.routes.js
+
 const { verifyToken } = require("../middlewares/authJwt");
 const controller = require("../controllers/products.controller");
 

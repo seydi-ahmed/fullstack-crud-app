@@ -1,3 +1,5 @@
+// product.model.js
+
 module.exports = (sequelize, Sequelize) => {
     const Product = sequelize.define("product", {
       name: {
