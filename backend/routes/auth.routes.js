@@ -1,3 +1,5 @@
+// auth.routes.js
+
 const { signup, signin } = require("../controllers/auth.controller");
 
 module.exports = function(app) {

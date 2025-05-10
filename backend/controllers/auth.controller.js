@@ -1,4 +1,4 @@
-// authRoutes.controller.js
+// auth.controller.js
 
 const db = require("../models");
 const User = db.user;
