@@ -3,46 +3,7 @@ git config --global user.name "seydi-ahmed"
 git config credential.helper store
 git add .
 git commit -m "
-Authentification (signup + signin)
-CRUD complet pour les produits
-Sécurité via token (JWT)
-Testé avec Postman
-
-🧩 1. Connexion à l’API depuis le frontend (React)
-Créer un service dans frontend/src/services/ :
-auth.service.js : pour gérer login/register
-product.service.js : pour appeler les routes /api/products
-
-🖼️ 2. Composants UI
-Dans src/components/ :
-🔐 Auth :
-Register.js : formulaire d’inscription
-Login.js : formulaire de connexion
-
-📦 Produits :
-ProductList.js : liste les produits
-ProductForm.js : ajout ou modification
-ProductItem.js : un produit affiché
-PrivateRoute.js : route protégée si non connecté
-
-🧠 3. Stocker le token côté client
-Quand l’utilisateur se connecte :
-Sauvegarder le accessToken (dans localStorage)
-L’utiliser dans toutes les requêtes via Axios
-
-🔐 4. Protéger les pages (PrivateRoute)
-Seules les personnes connectées peuvent :
-Voir les produits
-Créer/modifier/supprimer un produit
-
-🌍 5. Navigation (Navbar.js)
-Afficher :
-Login/Register si non connecté
-Produits/Logout si connecté
-
-✅ 6. Test complet du frontend
-Créer un compte
-Se connecter
-Ajouter, afficher, modifier, supprimer un produit
+1) front et back opérationnel à 100%
+2) reste le css
 "
 git push --force

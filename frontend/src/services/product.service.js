@@ -1,42 +1,16 @@
+// src/services/product.service.js
 import axios from 'axios';
+import authService from './auth.service';
 
-// const API_URL = 'http://localhost:8080/api/products/';
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api/products/';
+const API_URL = 'http://localhost:8080/api/products';
 
 const getAuthHeader = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-
-  if (user && user.accessToken) {
-    return { 'x-access-token': user.accessToken };
-  } else {
-    return {};
-  }
+  const user = authService.getCurrentUser();
+  return user ? { 'x-access-token': user.accessToken } : {};
 };
 
-const getAll = () => {
-  return axios.get(API_URL, { headers: getAuthHeader() });
-};
-
-const get = id => {
-  return axios.get(API_URL + id, { headers: getAuthHeader() });
-};
-
-const create = data => {
-  return axios.post(API_URL, data, { headers: getAuthHeader() });
-};
-
-const update = (id, data) => {
-  return axios.put(API_URL + id, data, { headers: getAuthHeader() });
-};
-
-const remove = id => {
-  return axios.delete(API_URL + id, { headers: getAuthHeader() });
-};
-
-export default {
-  getAll,
-  get,
-  create,
-  update,
-  remove
-};
+export const getProducts = () => axios.get(API_URL, { headers: getAuthHeader() });
+export const getProduct = (id) => axios.get(`${API_URL}/${id}`, { headers: getAuthHeader() });
+export const createProduct = (data) => axios.post(API_URL, data, { headers: getAuthHeader() });
+export const updateProduct = (id, data) => axios.put(`${API_URL}/${id}`, data, { headers: getAuthHeader() });
+export const deleteProduct = (id) => axios.delete(`${API_URL}/${id}`, { headers: getAuthHeader() });

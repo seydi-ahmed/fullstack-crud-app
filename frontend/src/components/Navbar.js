@@ -1,12 +1,30 @@
+// src/components/Navbar.js
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import authService from '../services/auth.service';
 
-const Navbar = () => (
-  <AppBar position="static">
-    <Toolbar>
-      <Typography variant="h6">My App</Typography>
-    </Toolbar>
-  </AppBar>
-);
+export default function Navbar() {
+  const navigate = useNavigate();
+  const user = authService.getCurrentUser();
 
-export default Navbar;
+  const handleLogout = () => {
+    authService.logout();
+    navigate('/login');
+  };
+
+  return (
+    <nav>
+      {user ? (
+        <>
+          <Link to="/products">Products</Link>
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
+    </nav>
+  );
+}
