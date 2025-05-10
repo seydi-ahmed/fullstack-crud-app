@@ -1,7 +1,8 @@
-pc@pc-HP-EliteBook-840-G3:~/Documents/Edacy/fullstack-crud-app$ tree -L 3
+```
 .
 ├── backend
 │   ├── config
+│   │   ├── auth.config.js
 │   │   └── db.config.js
 │   ├── controllers
 │   │   ├── auth.controller.js
@@ -12,7 +13,6 @@ pc@pc-HP-EliteBook-840-G3:~/Documents/Edacy/fullstack-crud-app$ tree -L 3
 │   │   ├── index.js
 │   │   ├── product.model.js
 │   │   └── user.model.js
-│   ├── node_modules (trop de fichiers pour les afficher ici)
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── routes
@@ -20,7 +20,6 @@ pc@pc-HP-EliteBook-840-G3:~/Documents/Edacy/fullstack-crud-app$ tree -L 3
 │   │   └── product.routes.js
 │   └── server.js
 ├── frontend
-│   ├── node_modules (trop de fichiers pour les afficher ici)
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── public
@@ -36,15 +35,23 @@ pc@pc-HP-EliteBook-840-G3:~/Documents/Edacy/fullstack-crud-app$ tree -L 3
 │       ├── App.js
 │       ├── App.test.js
 │       ├── components
+│       │   ├── auth
+│       │   │   ├── Login.js
+│       │   │   └── Register.js
+│       │   ├── Navbar.js
+│       │   ├── PrivateRoute.js
+│       │   └── products
+│       │       ├── ProductForm.js
+│       │       ├── ProductItem.js
+│       │       └── ProductList.js
 │       ├── index.css
 │       ├── index.js
 │       ├── logo.svg
 │       ├── reportWebVitals.js
 │       ├── services
+│       │   ├── auth.service.js
+│       │   └── product.service.js
 │       └── setupTests.js
 ├── push.sh
-└── Readme.md
-
-1067 directories, 31 files
-pc@pc-HP-EliteBook-840-G3:~/Documents/Edacy/fullstack-crud-app$ 
-
+├── Readme.md
+```

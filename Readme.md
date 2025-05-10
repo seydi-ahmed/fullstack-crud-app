@@ -1,5 +1,34 @@
 # FULL STACK CRUD
 
+## Describtion
+Création d'une application web de gestion de produits avec authentification des utilisateurs.
+
+## 🧑 Utilisateur
+- Peut s'inscrire et se connecter
+- A un compte personnel sécurisé (authentifié via JWT)
+- Ne voit que ses propres produits
+
+## 📦 Produit (objet métier)
+- id (auto-incrément)
+- name (nom du produit)
+- description (texte libre)
+- price (nombre décimal)
+- createdAt, updatedAt (timestamps automatiques)
+- userId (clé étrangère vers l'utilisateur)
+
+## 🔧 Fonctionnalités
+- 🔐 Authentification (inscription + connexion avec JWT)
+- 📝 CRUD produit:
+    - Créer un nouveau produit
+    - Lire la liste des produits d’un utilisateur
+    - Mettre à jour un produit existant
+    - Supprimer un produit
+
+## 🛠️ Stack technique :
+- Backend : Node.js + Express + PostgreSQL + Sequelize
+- Frontend : React.js
+- Auth : JWT (JSON Web Token)
+
 ## Installation et Utilisation
 1) Cloner le répertoire:
 ```
@@ -15,7 +44,7 @@ cd fullstack-crud-app
     - export NODE_OPTIONS=--openssl-legacy-provider
     - npm start
 
-    
+
 ## Base de données
 ```
 CREATE USER crud_user WITH PASSWORD 'crud_password';
