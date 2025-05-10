@@ -1,78 +1,29 @@
+// src/components/auth/Login.js
 import React, { useState } from 'react';
+import authService from '../../services/auth.service';
 import { useNavigate } from 'react-router-dom';
-import AuthService from '../../services/auth.service';
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
-const Login = () => {
-  const navigate = useNavigate();
+export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    AuthService.login(username, password).then(
-      () => {
-        navigate('/products');
-        window.location.reload();
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setMessage(resMessage);
-      }
-    );
+    try {
+      await authService.login(username, password);
+      navigate('/products');
+    } catch (err) {
+      alert('Login failed');
+    }
   };
 
   return (
-    <Container maxWidth="xs">
-      <Box mt={5}>
-        <Typography variant="h4" align="center">Login</Typography>
-        <form onSubmit={handleLogin}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {message && (
-            <Typography color="error" align="center">
-              {message}
-            </Typography>
-          )}
-          <Box mt={2}>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-            >
-              Sign In
-            </Button>
-          </Box>
-        </form>
-      </Box>
-    </Container>
+    <form onSubmit={handleLogin}>
+      <h2>Login</h2>
+      <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
   );
-};
-
-export default Login;
+}

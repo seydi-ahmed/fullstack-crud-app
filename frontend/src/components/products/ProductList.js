@@ -1,68 +1,39 @@
-import React, { useState, useEffect } from 'react';
+// src/components/products/ProductList.js
+import React, { useEffect, useState } from 'react';
+import { getProducts, deleteProduct } from '../../services/product.service';
 import { useNavigate } from 'react-router-dom';
-import ProductService from '../../services/product.service';
-import { Button, Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@mui/material';
-import ProductItem from './ProductItem';
 
-const ProductList = () => {
+export default function ProductList() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    ProductService.getAll()
-      .then(response => {
-        setProducts(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching products:', error);
-      });
+    fetchProducts();
   }, []);
 
-  const handleDelete = (id) => {
-    ProductService.remove(id)
-      .then(() => {
-        setProducts(products.filter(product => product.id !== id));
-      })
-      .catch(error => {
-        console.error('Error deleting product:', error);
-      });
+  const fetchProducts = async () => {
+    const res = await getProducts();
+    setProducts(res.data);
+  };
+
+  const handleDelete = async (id) => {
+    await deleteProduct(id);
+    fetchProducts();
   };
 
   return (
-    <Container>
-      <Box mt={3} mb={3}>
-        <Typography variant="h4">Products</Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate('/products/new')}
-        >
-          Add Product
-        </Button>
-      </Box>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {products.map(product => (
-              <ProductItem 
-                key={product.id} 
-                product={product} 
-                onDelete={handleDelete} 
-              />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+    <div>
+      <h2>Products</h2>
+      <button onClick={() => navigate('/products/new')}>Add Product</button>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name} - ${product.price} <br />
+            <button onClick={() => navigate(`/products/edit/${product.id}`)}>Edit</button>
+            <button onClick={() => handleDelete(product.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-};
-
-export default ProductList;
+}

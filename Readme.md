@@ -121,3 +121,39 @@ GRANT ALL PRIVILEGES ON DATABASE crud_app TO crud_user;
 | GET /api/products/:id      | x-access-token: \<ton_token\>    |
 | PUT /api/products/:id      | x-access-token: \<ton_token\>    |
 | DELETE /api/products/:id   | x-access-token: \<ton_token\>    |
+
+## Boulot pour le frontend
+### 🧩 1. Connexion à l’API depuis le frontend (React)
+1) auth.service.js : pour gérer login/register
+2) product.service.js : pour appeler les routes /api/products
+
+### 🖼️ 2. Composants UI
+1) 🔐 Auth :
+- Register.js : formulaire d’inscription
+- Login.js : formulaire de connexion
+
+### 📦 Produits :
+1) ProductList.js : liste les produits
+2) ProductForm.js : ajout ou modification
+3) ProductItem.js : un produit affiché
+4) PrivateRoute.js : route protégée si non connecté
+
+### 🧠 3. Stocker le token côté client
+1) Quand l’utilisateur se connecte :
+- Sauvegarder le accessToken (dans localStorage)
+- L’utiliser dans toutes les requêtes via Axios
+
+### 🔐 4. Protéger les pages (PrivateRoute)
+1) Seules les personnes connectées peuvent:
+- Voir les produits
+- Créer/modifier/supprimer un produit
+
+### 🌍 5. Navigation (Navbar.js)
+1) Afficher :
+- Login/Register si non connecté
+- Produits/Logout si connecté
+
+### ✅ 6. Test complet du frontend
+1) Créer un compte
+- Se connecter
+- Ajouter, afficher, modifier, supprimer un produit
